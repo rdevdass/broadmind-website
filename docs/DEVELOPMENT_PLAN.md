@@ -2,15 +2,15 @@
 
 Prepared for Dev Ramasawmy on 5 October 2026.
 
-Broadmind now has a working visual and content foundation. The recommended next step is to move this foundation into the business's own hosting and GitHub account, then turn the website into a dependable source of course enquiries and registrations. Preserve the logo and approved design while adding capabilities in stages.
+Broadmind's new website is now publicly hosted in the business's Azure account at https://www.broadmind.mu and https://broadmind.mu, with source code and automatic publishing in its GitHub repository. The next priority is to turn the website into a dependable source of course enquiries and registrations. Preserve the logo and approved design while adding capabilities in stages.
 
 ## Current position
 
 **Available:** responsive website; 36 searchable course overviews; five subject areas; four suggested learning pathways; company information; Dev, Anjili and Ashok listed in the leadership section; email and telephone links; course-outline request dialogs; FAQ and privacy information.
 
-**Launch preparation:** the user has designated `https://github.com/rdevdass/broadmind-website` for source delivery. Ashok's biography and MBA qualification are now included from his supplied profile.
+**Launch completed on 5 October 2026:** source is saved in `https://github.com/rdevdass/broadmind-website`; GitHub publishes checked website changes to the existing Azure Static Web App `broadmind-website`. Both public domains were verified over HTTPS against the deployed source. A local snapshot of the previous public test pages and a launch record are saved in `Website Handover`. Ashok's approved biography is included without the Oregon Consulting reference.
 
-**Still to complete:** upload to the user's server; approved team photographs; confirmed session dates, prices and arrangements; automatic enquiry handling; automatic course-brochure delivery; search-friendly individual pages; content editing tools; registrations and payments. Check the repository for the latest source-delivery status.
+**Still to complete:** approved team photographs; confirmed session dates, prices and arrangements; automatic enquiry handling; automatic course-brochure delivery; search-friendly individual pages; content editing tools; registrations and payments. Separately, confirm the Azure subscription has moved beyond its trial before the trial expires; the website's Free hosting plan and the account subscription are distinct.
 
 The present forms open an email draft. The training calendar currently states that no confirmed dates are displayed. These limits should remain explicit until the corresponding services are implemented.
 
@@ -18,7 +18,7 @@ The present forms open an email draft. The training calendar currently states th
 
 | Phase | Business outcome | Main work | Completion evidence |
 | --- | --- | --- | --- |
-| 1. Ownership and launch | A public website controlled by Broadmind | Add Ashok; finalise leadership copy; deploy to the user's server; configure HTTPS and domain; put source in the user's GitHub; retain a rollback copy | The intended public address works without a ChatGPT login; the owner can access the source; the deployed version is recorded |
+| 1. Ownership and launch — completed | A public website controlled by Broadmind | Three leadership profiles published; existing Azure hosting connected; HTTPS and both domains checked; source and automated publishing in the user's GitHub; previous public test pages backed up | Both domains serve the new site without a ChatGPT login; deployment run 37282414856 succeeded for commit 81716d9; launch record retained locally |
 | 2. Enquiries and brochures | Visitors can request information without needing an email application | Add secure form handling, an enquiry record, automatic brochure email, internal notification and delivery tracking | A test visitor receives the correct brochure; the team receives the enquiry; failures are visible and can be retried |
 | 3. Content and search | Staff can keep information current and courses can be discovered directly | Give courses their own URLs and pre-rendered pages; add an editor; publish confirmed calendar sessions; improve page metadata and image delivery | A staff member updates a course and date without changing code; course URLs work directly and are crawlable |
 | 4. Registrations and payments | Visitors can book a real scheduled session | Add registration, capacity management, confirmation emails, cancellation handling and an agreed payment/invoicing route | A registration produces a reliable record and confirmation; duplicate and failed payments are handled correctly if payments are enabled |
@@ -29,11 +29,11 @@ Phases are sequencing recommendations, not fixed calendar commitments. Hosting a
 
 ## Phase 1 details
 
-Keep the current design and complete a controlled transfer. Confirm the hosting environment and repository destination first. Finalise the three leadership profiles, business contact details and public-facing company information. Add Ashok's supplied biography without inferring qualifications or experience.
+The controlled transfer is complete. The production source checkout is `broadmind-github`; see `docs/DEPLOYMENT.md` for the Azure workflow and rollback procedure. Review future website changes before merging into `main`, because relevant changes on that branch publish automatically after checks pass. The separate ChatGPT Sites review copy does not update automatically with Azure.
 
 Use initials until approved portraits are available. Replace the generated workshop concept image with genuine Broadmind photography when suitable images are ready. Verify any claims about course approval, CPD, fees or eligibility for each session before publishing them.
 
-Deliver a public address, a versioned repository, a server upload package, a documented deployment procedure and a recoverable previous release. The current static site can be launched as an information website with its email-draft forms clearly described.
+The public addresses, repository, server upload package, deployment procedure and snapshot of the previous public test pages have been delivered. The current site is live as an information website with its email-draft forms clearly described.
 
 ## Phase 2 details
 
@@ -45,7 +45,7 @@ Use a course-to-brochure mapping maintained by the team. Store restricted brochu
 
 Include delivery failure handling, duplicate-request handling, spam protection and a straightforward process for removing or correcting enquiry information. Keep brochure-request consent separate from any optional marketing subscription. Set access, retention and privacy wording according to the actual services chosen.
 
-Choose the implementation after identifying the host. PHP-capable hosting may support a small server-side endpoint; another server may use a different backend. The user-facing design does not need a full rebuild solely to add enquiry handling.
+Choose a backend and email delivery service compatible with the confirmed Azure hosting. Confirm costs, sender-domain authentication and storage requirements before implementation. The user-facing design does not need a full rebuild solely to add enquiry handling.
 
 ## Phase 3 details
 
