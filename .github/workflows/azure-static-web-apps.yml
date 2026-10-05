@@ -1,0 +1,47 @@
+name: Publish Broadmind to Azure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dist/**'
+      - 'scripts/check.mjs'
+      - 'package.json'
+      - '.github/workflows/azure-static-web-apps.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: broadmind-azure-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out website source
+        uses: actions/checkout@v4
+
+      - name: Set up website checks
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check scripts, course data, profiles and assets
+        run: node scripts/check.mjs
+
+      - name: Publish public website files to Azure
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: dist
+          api_location: ''
+          output_location: ''
+          skip_app_build: true
+          skip_api_build: true
+          production_branch: main

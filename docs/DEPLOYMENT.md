@@ -1,6 +1,23 @@
 # Broadmind server deployment and GitHub handover
 
-Prepared on 5 October 2026. This guide covers transferring the approved website to your own server and retaining its editable source in [rdevdass/broadmind-website](https://github.com/rdevdass/broadmind-website), the repository designated by the owner. The production domain, server and deployment access still need to be provided.
+Updated on 5 October 2026. The owner has selected the existing Azure Static Web App `broadmind-website` and keeps the editable source in [rdevdass/broadmind-website](https://github.com/rdevdass/broadmind-website).
+
+## Azure production deployment
+
+- Resource and resource group: `broadmind-website`.
+- Azure address: `https://zealous-stone-06124f510.6.azurestaticapps.net`.
+- Custom domains shown as validated in Azure: `www.broadmind.mu` and `broadmind.mu`. Verify both public addresses after every launch; validation alone does not establish correct DNS routing.
+- Hosting SKU shown in the owner's portal: Free. The account dashboard also showed trial credit expiring in 27 days on 5 October 2026; the owner must confirm ongoing subscription availability separately from the app's Free SKU.
+- Workflow: `.github/workflows/azure-static-web-apps.yml`.
+- Repository secret: `AZURE_STATIC_WEB_APPS_API_TOKEN`, added directly by the owner. Its value must never be placed in files, chat or screenshots.
+
+The workflow runs on relevant changes to `main` or a manual **Run workflow** from the Actions tab. It validates scripts, course data, profiles and local asset references, then deploys only `dist/`. There is no build step, API or dependency installation. Failed checks prevent deployment. Other branches cannot deploy production through this workflow. It does not alter DNS, email records or the Azure hosting plan.
+
+Before merging a website change into `main`, review it locally; merging publishes the change automatically. Check the workflow's successful result, then inspect the public site. If a deployment fails, inspect the failing step under **Actions → Publish Broadmind to Azure**. If Azure reports an invalid deployment token, replace the repository secret with the current token from this exact Azure resource and rerun the workflow. Never disclose it in logs.
+
+For subsequent releases, revert the faulty website commit in GitHub and merge the revert into `main` to deploy the prior content. A first-launch backup of the old public test pages is kept outside this repository in the owner's local `Website Handover` folder; its manifest records the scope and any missing files. It is not a backup of private Azure configuration. Do not remove the hosting resource to roll back.
+
+The generic server-transfer guidance below remains useful if moving away from Azure. [Microsoft build configuration](https://learn.microsoft.com/en-us/azure/static-web-apps/build-configuration) documents deploying an already prepared folder with `skip_app_build`.
 
 ## Information needed to complete the transfer
 
@@ -66,7 +83,7 @@ Recommended maintenance routine:
 4. Package the exact approved source and deploy that release.
 5. Tag formal releases and record what was deployed.
 
-Automated deployment can be added once the server and access method are known. Keep credentials in the repository's deployment secret configuration, not in its source. GitHub supports deployment environments and gates, but availability depends on repository visibility and account plan; select the simplest supported setup for this repository. [GitHub deployment documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments).
+Automated deployment is configured for Azure as described above. Keep credentials in the repository's deployment secret configuration, not in its source. GitHub supports deployment environments and gates, but availability depends on repository visibility and account plan; select the simplest supported setup for this repository. [GitHub deployment documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments).
 
 ## Rollback
 

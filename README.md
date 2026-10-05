@@ -2,7 +2,7 @@
 
 This is the editable source for the Broadmind website. The current release preserves the original logo and contains a responsive homepage, 36 searchable courses, suggested training pathways, a calendar area, company information, three leadership profiles, contact forms and frequently asked questions.
 
-The owner-designated repository is [rdevdass/broadmind-website](https://github.com/rdevdass/broadmind-website). The production domain and hosting destination are still to be confirmed.
+The owner-designated repository is [rdevdass/broadmind-website](https://github.com/rdevdass/broadmind-website). The production destination is the existing Azure Static Web App `broadmind-website`, with custom domains `www.broadmind.mu` and `broadmind.mu`.
 
 The site can be hosted on an ordinary web server. It has no runtime dependency on ChatGPT, Sites, a database or a paid website builder. JavaScript is required for its catalogue and navigation; a basic contact fallback is included for visitors without JavaScript.
 
@@ -45,7 +45,7 @@ Upload the **contents** of `dist/` into the website document root. The public ro
 
 Do not upload the source repository, `docs/`, `.git`, `.openai`, original CVs or development scripts to the public website. The site uses hash navigation such as `/#courses`, so this release does not need a special server rewrite rule.
 
-Read [the deployment guide](docs/DEPLOYMENT.md) before replacing an existing website. The hosting account, domain, document root and deployment access still need to be confirmed.
+For Azure, `.github/workflows/azure-static-web-apps.yml` checks the website and uploads only `dist/` when website changes reach `main`. The owner stores the Azure deployment token in the GitHub Actions secret `AZURE_STATIC_WEB_APPS_API_TOKEN`. You can also publish the current `main` branch from GitHub's Actions tab using **Run workflow**. Read [the deployment guide](docs/DEPLOYMENT.md) for the exact destination, maintenance and rollback steps.
 
 ## Prepare release packages
 
