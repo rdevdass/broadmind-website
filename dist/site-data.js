@@ -41,7 +41,6 @@ window.BROADMIND_SITE = {
       colour: '#006b9c',
       biography: [
         'Ashok combines experience in business administration and corporate compliance with a background in education management in Mauritius. As Director and Programme Officer at Education Consult Ltd, he coordinates corporate training programmes, client communication and training arrangements, including MQA and HRDC-related administration.',
-        'He also serves as Director of Oregon Consulting Ltd, supporting business operations, client assignments and regulatory documentation.',
         'Earlier in his career, Ashok managed Mascareignes Academy of Law and Management (MALEM), where he also served as Programme Officer and University Liaison Officer. His work included programme administration, student support and liaison for courses offered by the University of London and the University of South Africa.'
       ],
       specialisms: ['Training coordination', 'Education management', 'Corporate administration', 'Compliance support']

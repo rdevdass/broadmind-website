@@ -52,13 +52,13 @@ Read [the deployment guide](docs/DEPLOYMENT.md) before replacing an existing web
 Python 3 is needed only to create ZIP packages; it is not required on the web server.
 
 ```sh
-python scripts/package.py --output releases/v1.2.0
+python scripts/package.py --output releases/v1.2.1
 ```
 
 This creates:
 
-- `broadmind-server-files-v1.2.0.zip`: public website files, with `index.html` at the ZIP root.
-- `broadmind-source-v1.2.0.zip`: editable source, checks and documentation for GitHub.
+- `broadmind-server-files-v1.2.1.zip`: public website files, with `index.html` at the ZIP root.
+- `broadmind-source-v1.2.1.zip`: editable source, checks and documentation for GitHub.
 - `checksums.json`: SHA256 hashes of the ZIP files.
 
 Use a new output folder when packaging again; the script does not overwrite an existing release. For a subsequent formal release, update the version in `package.json`; the ZIP filenames are generated from it.
