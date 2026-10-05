@@ -147,3 +147,22 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Broadmind portable website source
+node_modules/
+.sites-runtime/
+.sites-checkout/
+*.tar.gz
+*.zip
+qa/
+releases/
+__pycache__/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+.openai/
+!/dist/
+!/dist/**

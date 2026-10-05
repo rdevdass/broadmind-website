@@ -1,0 +1,10 @@
+{
+  "name": "broadmind-corporate-training",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Portable corporate training website for Broadmind, Education Consult Ltd.",
+  "scripts": {
+    "preview": "node preview.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}
